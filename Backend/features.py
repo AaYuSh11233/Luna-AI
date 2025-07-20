@@ -18,8 +18,9 @@ import speech_recognition as sr
 
 AI_Name = "Luna"
 
-# Configure Gemini API
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+# Use GOOGLE_API_KEY for compatibility with the official Gemini API SDK
+api_key = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-pro')
 
 con = sqlite3.connect('database.db')
