@@ -19,7 +19,7 @@ import speech_recognition as sr
 AI_Name = "Luna"
 
 # Configure Gemini API
-genai.configure(api_key='')
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel('gemini-pro')
 
 con = sqlite3.connect('database.db')
@@ -28,7 +28,7 @@ cursor = con.cursor()
 @eel.expose
 def playAiSound():
     try:
-        music_dir = "Ui\\assets\\audio\\N.E.C. Voice.mp3"
+        music_dir = "Frontend/assets/audio/N.E.C. Voice.mp3"
         playsound(music_dir)
     except Exception as e:
         print(f"Error playing AI sound: {str(e)}")
