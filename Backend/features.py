@@ -15,13 +15,18 @@ from Backend.command import speak
 import google.generativeai as genai
 import time
 import speech_recognition as sr
+from dotenv import load_dotenv
+load_dotenv()
 
 AI_Name = "Luna"
 
 # Use GOOGLE_API_KEY for compatibility with the official Gemini API SDK
 api_key = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=api_key)
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('models/gemini-2.5-flash')
+
+# for model in genai.list_models():
+#     print(model.name)
 
 con = sqlite3.connect('database.db')
 cursor = con.cursor()
