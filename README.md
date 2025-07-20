@@ -125,8 +125,8 @@ A: LUNA is currently free during the beta phase. Future pricing will include bot
 
 To get started with LUNA:
 
-1. Clone this repository:
-   ```
+1. **Clone this repository:**
+   ```sh
    git clone https://github.com/yourusername/luna-assistant.git
    ```
 
