@@ -1,19 +1,26 @@
 import time  # Fix: Import time module directly instead of from datetime
-import pyttsx3
+# import pyttsx3
 import speech_recognition as sr
 import eel
+import asyncio
+import edge_tts
+import os
 
 def speak(text):
     try:
         text = str(text)
-        engine = pyttsx3.init('sapi5')
-        voices = engine.getProperty('voices')
-        engine.setProperty('voice', voices[1].id)
-        engine.setProperty('rate', 174)
         eel.DisplayMessage(text)
-        engine.say(text)
         eel.receiverText(text)
-        engine.runAndWait()
+        # Use edge_tts for speech synthesis
+        voice = "en-IN-NeerjaNeural"  # Indian English female voice
+        rate = "+0%"
+        async def tts():
+            communicate = edge_tts.Communicate(text, voice=voice, rate=rate)
+            await communicate.save("temp_tts.mp3")
+        asyncio.run(tts())
+        from playsound import playsound
+        playsound("temp_tts.mp3")
+        os.remove("temp_tts.mp3")
     except Exception as e:
         print(f"Error in speak function: {str(e)}")
         eel.DisplayMessage("Error in speech synthesis")
@@ -63,14 +70,13 @@ def allCommands(message=1):
             return
 
         # Command processing
-        if 'open' in query:
+        if any(cmd in query for cmd in [
+            'open', 'browser', 'create folder', 'create file', 'write code', 'recycle bin', 'restore recycle bin', 'restore deleted', 'vs code', 'visual studio code']):
             from Backend.features import openCommand
             openCommand(query)
-            
-        elif 'youtube' in query:  # Fix: Changed condition to be more flexible
+        elif 'youtube' in query:
             from Backend.features import PlayYoutube
             PlayYoutube(query)
-            
         elif any(cmd in query for cmd in ["send message", "phone call", "video call"]):
             from Backend.features import findContact, whatsApp
             contact_no, name = findContact(query)
@@ -87,7 +93,6 @@ def allCommands(message=1):
         else:
             from Backend.features import chatBot
             chatBot(query)
-
     except Exception as e:
         print(f"Error in allCommands: {str(e)}")
         speak("I encountered an error processing that request")
