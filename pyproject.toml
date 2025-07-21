@@ -67,6 +67,7 @@ dependencies = [
     "pypiwin32==223",
     "pyrect==0.2.0",
     "pyscreeze==1.0.1",
+    "python-dotenv>=1.1.1",
     "pyttsx3==2.98",
     "pytweening==1.2.0",
     "pywhatkit==5.4",

@@ -104,46 +104,89 @@ LUNA represents the future of desktop interaction - a future where your computer
 - Small business owners
 - Desktop power users
 
-## Frequently Asked Questions
+---
 
-Q: How is LUNA different from Alexa or Google Assistant?
-A: LUNA is designed specifically for desktop environments with deep system integration. Unlike cloud-only assistants, LUNA can perform offline tasks and directly control your computer.
 
-Q: What happens if the internet connection fails?
-A: LUNA maintains basic functionality offline, including system commands and application control. Only cloud-dependent features like AI chat and YouTube require internet.
+# 🚀 **Getting Started**
 
-Q: Is my data secure?
-A: Yes. LUNA processes most commands locally and only sends data to the cloud when necessary (like for AI responses). No personal data is stored on external servers.
+**Prerequisites:**
+- **Python 3.12+**
+- **[uv](https://docs.astral.sh/uv/)** (modern Python package manager)
 
-Q: Will LUNA work on my Mac/Linux system?
-A: Currently, LUNA is Windows-only, but cross-platform support is a key priority in our roadmap.
-
-Q: How much does it cost?
-A: LUNA is currently free during the beta phase. Future pricing will include both free and premium tiers with advanced features.
-
-## Getting Started
-
-To get started with LUNA:
-
-1. **Clone this repository:**
+**Setup & Run:**
+1. **Clone the repository**
    ```sh
-   git clone https://github.com/yourusername/luna-assistant.git
-   ```
+   git clone https://github.com/AaYuSh11233/Luna-AI.git
 
-2. Install the required dependencies:
+   cd LUNA-AI
    ```
-   pip install -r requirements.txt
+2. **Initialize the project (if not already present)**
+   ```sh
+   uv init
    ```
-
-3. Set up your environment variables:
+3. **Import dependencies (if migrating from requirements.txt)**
+   ```sh
+   uv add -r requirements.txt -c requirements.txt
+   ```
+4. **Sync the environment**
+   ```sh
+   uv sync
+   ```
+5. **Set up environment variables**
    - Create a `.env` file in the root directory
-   - Add your Gemini API key: `GEMINI_API_KEY=your_api_key_here`
-
-4. Run the main script:
+   - Add your Gemini API key:
+     ```
+     GOOGLE_API_KEY=your_api_key_here
+     ```
+6. **Run the assistant:**
+   ```sh
+   uv run python run.py
    ```
-   python run.py
-   ```
 
+---
+
+
+# 🧩 **Adding New Modules**
+
+- **Backend:**
+  - Add new Python modules in the `Backend/` directory.
+  - Import and use them in `main.py` or `run.py` as needed.
+- **Frontend:**
+  - Add new JS/CSS modules in the `Frontend/` directory.
+  - Reference them in `index.html` or other HTML files.
+- **Dependencies:**
+  - Add new dependencies with:
+    ```sh
+    uv add <package>
+    ```
+  - Sync your environment after changes:
+    ```sh
+    uv sync
+    ```
+
+---
+
+# 🛠️ **Useful uv Commands**
+
+- **Install dependencies:**
+  ```sh
+  uv sync
+  ```
+- **Add new dependencies:**
+  ```sh
+  uv add <package>
+  ```
+- **Run the app:**
+  ```sh
+  uv run python run.py
+  ```
+
+---
+
+# 💡 **Tips**
+- Use `.env` for secrets and API keys.
+- Keep `uv.lock` committed for reproducible environments.
+- Do not commit `database.db` or `.venv/` (see `.gitignore`).
 ## Development Status
 
 Current Version: Beta 1.0
@@ -189,6 +232,28 @@ Why users might choose LUNA over alternatives:
    - Planned affordable pricing
    - No expensive hardware required
 
+
+---
+
+# ❓ **Frequently Asked Questions**
+
+**Q: How is LUNA different from Alexa or Google Assistant?**  
+A: LUNA is designed specifically for desktop environments with deep system integration. Unlike cloud-only assistants, LUNA can perform offline tasks and directly control your computer.
+
+**Q: What happens if the internet connection fails?**  
+A: LUNA maintains basic functionality offline, including system commands and application control. Only cloud-dependent features like AI chat and YouTube require internet.
+
+**Q: Is my data secure?**  
+A: Yes. LUNA processes most commands locally and only sends data to the cloud when necessary (like for AI responses). No personal data is stored on external servers.
+
+**Q: Will LUNA work on my Mac/Linux system?**  
+A: Currently, LUNA is Windows-only, but cross-platform support is a key priority in our roadmap.
+
+**Q: How much does it cost?**  
+A: LUNA is currently free during the beta phase. Future pricing will include both free and premium tiers with advanced features.
+
+---
+
 ## Contributing
 
 We welcome contributions from the community! If you'd like to contribute to LUNA, please follow these steps:
@@ -201,3 +266,5 @@ We welcome contributions from the community! If you'd like to contribute to LUNA
 6. Open a Pull Request
 
 LUNA - Redefining desktop interaction, one command at a time.
+
+
